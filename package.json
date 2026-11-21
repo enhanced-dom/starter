@@ -1,6 +1,6 @@
 {
   "name": "@enhanced-dom/starter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Helpers for jumpstarting a project",
   "repository": "https://github.com/enhanced-dom/starter.git",
   "type": "module",

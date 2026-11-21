@@ -24,6 +24,7 @@ export interface IOptions {
   name: string
   description: string
   type: ProjectType
+  repository?: string
   tests?: TestRunner
   features: Feature[]
 }
@@ -105,7 +106,7 @@ const addWebpackToolchain = ({ packageJson }: IProject) => {
 const applyBase = (project: IProject, options: IOptions, licensePath: string) => {
   const { packageJson, files } = project
   const shortName = packageJson.name.split('/').pop()
-  packageJson.repository = `https://github.com/enhanced-dom/${shortName}.git`
+  packageJson.repository = `https://github.com/${options.repository ?? `enhanced-dom/${shortName}`}.git`
   packageJson.scripts['configure-build'] = `@enhanced-dom-bootstrap-tsconfig --type=${options.type}`
   if (options.type !== ProjectType.BROWSER) {
     packageJson.devDependencies['@types/node'] = '^22.20.5'

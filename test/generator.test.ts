@@ -79,6 +79,12 @@ CLAUDE.md
     expect(packageJson.repository).toBe('https://github.com/enhanced-dom/thing.git')
   })
 
+  test('GENERATOR-3b: -repository overrides the default enhanced-dom/<short name> slug', async () => {
+    const { packageJson } = await generateWith({ name: '@enhanced-dom-react/icon', repository: 'enhanced-dom/react-icon' })
+    expect(packageJson.name).toBe('@enhanced-dom-react/icon')
+    expect(packageJson.repository).toBe('https://github.com/enhanced-dom/react-icon.git')
+  })
+
   test('GENERATOR-4: README leads with the description, and has no leading blank lines without one', async () => {
     const withDescription = await generateWith()
     const withoutDescription = await generateWith({ description: '' })

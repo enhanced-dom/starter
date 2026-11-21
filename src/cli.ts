@@ -7,7 +7,7 @@ export const parseArgs = (argv: string[]): IOptions => {
   const args = yargs(argv)
     .parserConfiguration({ 'short-option-groups': false })
     .usage(
-      '$0 <folder> -name <name> [-description <text>] [-type node|browser|isomorphic] [-tests jest] [-css] [-react] [-webcomponent] [-demo] [-standalone]',
+      '$0 <folder> -name <name> [-description <text>] [-repository <org/repo>] [-type node|browser|isomorphic] [-tests jest] [-css] [-react] [-webcomponent] [-demo] [-standalone]',
     )
     .demandCommand(1, 'Destination folder is required')
     .string('name')
@@ -15,6 +15,8 @@ export const parseArgs = (argv: string[]): IOptions => {
     .describe('name', `Package name, scoped to ${SCOPE} unless already scoped`)
     .string('description')
     .default('description', '')
+    .string('repository')
+    .describe('repository', 'GitHub "org/repo" slug, when it differs from the package name (default: enhanced-dom/<package short name>)')
     .choices('type', Object.values(ProjectType))
     .default('type', ProjectType.ISOMORPHIC)
     .string('tests')
@@ -33,6 +35,7 @@ export const parseArgs = (argv: string[]): IOptions => {
     folder: String(args._[0]),
     name: args.name,
     description: args.description,
+    repository: args.repository,
     type: args.type,
     tests: args.tests,
     features: Object.values(Feature).filter((feature) => args[feature]),

@@ -31,4 +31,9 @@ describe('argument parsing', () => {
     const options = parseArgs(['out', '-name', 'widget', '-standalone'])
     expect(options.features).toEqual([Feature.STANDALONE])
   })
+
+  test('CLI-5: reads -repository', () => {
+    const options = parseArgs(['out', '-name', '@enhanced-dom-react/icon', '-repository', 'enhanced-dom/react-icon'])
+    expect(options.repository).toBe('enhanced-dom/react-icon')
+  })
 })
