@@ -1,0 +1,15 @@
+dist/
+node_modules/
+.vscode/
+.DS_Store
+npm-debug.log*
+# @enhanced-dom/lint
+.fallowrc.json
+.npmrc
+.nvmrc
+# end @enhanced-dom/lint
+.generated
+.claude/*
+.devcontainer/*
+.rtk/*
+CLAUDE.md
